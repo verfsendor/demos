@@ -5,8 +5,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
    <Button
-       android:id="@+id/binder"
+       android:id="@+id/send"
        android:layout_width="match_parent"
        android:layout_height="50dp"
-       android:text="多进程测试"/>
+       android:text="发送"/>
+   <Button
+       android:id="@+id/get"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:text="接收"/>
+   <Button
+       android:id="@+id/send_str"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:text="发送文本"/>
 </LinearLayout>

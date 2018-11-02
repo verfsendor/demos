@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:name=".MyApplication"
         android:theme="@style/AppTheme" >
-        <activity android:name=".handler.HandlerActivity">
+        <activity android:name=".binder.BinderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,11 +23,12 @@
         <service android:name=".servicetest.TestService"/>
         <activity android:name=".servicetest.ServiceTestActivity"/>
 
-        <activity android:name=".binder.BinderActivity"
-            android:process=":binder"/>
-        <activity android:name=".binder.Binder2Activity"
-            android:process=":binder"/>
+        <!--<activity android:name=".binder.BinderActivity" />-->
+        <activity android:name=".handler.HandlerActivity" />
+
         <activity android:name=".MainActivity"/>
+        <service android:name=".binder.PushService"
+            android:process=":push"/>
 
     </application>
 
