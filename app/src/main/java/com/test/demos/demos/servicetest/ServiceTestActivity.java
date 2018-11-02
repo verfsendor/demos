@@ -66,20 +66,22 @@ public class ServiceTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ServiceTestActivity.this, Test2Service.class);
-                bindService(intent, connection, BIND_AUTO_CREATE);
-//                startService(intent);
+//                bindService(intent, connection, BIND_AUTO_CREATE);
+                intent.putExtra("aaa","徐镇东");
+                startService(intent);
             }
         });
         findViewById(R.id.stop_intentservice).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ServiceTestActivity.this, FragmentTestActivity.class));
-                finish();
+//                finish();
 //                Intent intent = new Intent(ServiceTestActivity.this, Test2Service.class);
 //                if(mBound){
 //                    unbindService(connection);
 //                    mBound=false;
 //                }
+//                stopService(intent);
             }
         });
 

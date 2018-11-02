@@ -2,14 +2,35 @@ package com.test.demos.demos.servicetest;
 
 import android.app.IntentService;
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-public class Test2Service extends IntentService {
+import com.test.demos.demos.fragmenttest.FragmentTestActivity;
+import com.test.demos.demos.fragmenttest.Test2fragment;
 
+public class Test2Service extends IntentService {
+    //匿名内部类：服务连接对象
+    private ServiceConnection connection = new ServiceConnection() {
+
+        //当服务异常终止时会调用。注意，解除绑定服务时不会调用
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Log.v("verf","onServiceDisconnected");
+            //解决了多次执行unbindService()方法引发的异常问题
+        }
+
+        //和服务绑定成功后，服务会回调该方法
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.v("verf","onServiceConnected");
+
+        }
+    };
     String tag = getClass().getSimpleName();
     MyBinder binder = new MyBinder();
     public Test2Service() {
@@ -23,8 +44,14 @@ public class Test2Service extends IntentService {
     }
 
     @Override
+    public void onStart(@Nullable Intent intent, int startId) {
+        Log.v("verf",tag + " onStart " + intent.getStringExtra("aaa") );
+        super.onStart(intent, startId);
+    }
+
+    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.v("verf",tag + " onStartCommand" );
+        Log.v("verf",tag + " onStartCommand " + intent.getStringExtra("aaa"));
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -47,6 +74,8 @@ public class Test2Service extends IntentService {
                 e.printStackTrace();
             }
         }
+        Intent intent1 = new Intent(Test2Service.this, Test2Service.class);
+        bindService(intent1, connection, BIND_AUTO_CREATE);
     }
 
     @Override
@@ -66,6 +95,7 @@ public class Test2Service extends IntentService {
     //MyBinder类，继承Binder：让里面的方法执行下载任务，并获取下载进度
     public class MyBinder extends Binder {
         public void startDownload() {
+//            startActivity(new Intent(Test2Service.this,FragmentTestActivity.class));
             Log.d("verf", "MyBinder startDownload() executed " + Thread.currentThread().getId());
             // 执行具体的下载任务
         }

@@ -13,6 +13,8 @@ import android.view.View;
 
 import com.test.demos.demos.R;
 import com.test.demos.demos.saveTest.SaveTestActivity;
+import com.test.demos.demos.servicetest.Test2Service;
+import com.test.demos.demos.servicetest.TestService;
 
 public class FragmentTestActivity extends AppCompatActivity {
 
@@ -33,6 +35,8 @@ public class FragmentTestActivity extends AppCompatActivity {
         findViewById(R.id.fragment_1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                                Intent intent = new Intent(FragmentTestActivity.this, TestService.class);
+stopService(intent);
                 FragmentUtils.replaceFragmentWithAnim(getSupportFragmentManager(), Testfragment.class, R.id.frame, null);
 
             }

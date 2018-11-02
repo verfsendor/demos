@@ -16,6 +16,12 @@ public class TestService extends Service {
     }
 
     @Override
+    public void onStart(Intent intent, int startId) {
+        Log.v("verf",tag + " onStart" );
+        super.onStart(intent, startId);
+    }
+
+    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.v("verf",tag + " onStartCommand" );
         Log.v("verf","now thread " + Thread.currentThread().getId()+"");
@@ -24,7 +30,7 @@ public class TestService extends Service {
                 //在子线程中处理具体的逻辑
                 //在这里我们只做打印子线程id的操作
                 Log.v("verf","now thread " + Thread.currentThread().getId()+"");
-                stopSelf();  //服务执行完毕后自动停止
+//                stopSelf();  //服务执行完毕后自动停止
             }
         }).start();
 
