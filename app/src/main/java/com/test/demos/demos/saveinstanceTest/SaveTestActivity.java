@@ -1,4 +1,4 @@
-package com.test.demos.demos.saveTest;
+package com.test.demos.demos.saveinstanceTest;
 
 import android.content.Intent;
 import android.os.Bundle;

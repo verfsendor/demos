@@ -9,13 +9,30 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk{
+            moduleName "jnidemo3"
+            abiFilters "armeabi","x86","armeabi-v7a","arm64-v8a"
+            ldLibs "log"
+        }
+
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        externalNativeBuild {
+            ndkBuild {
+                path 'src/main/jni/Android.mk'
+            }
+        }
+        sourceSets.main {
+            jni.srcDirs = []
+            jniLibs.srcDirs = ['src/main/jniLibs']
+        }
     }
+
+
 }
 
 dependencies {
@@ -23,6 +40,8 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:25.0.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation "com.android.support:design:${SUPPORT_LIB_VERSION}"
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
     testImplementation 'junit:junit:4.12'
     api files('libs/kefu-sdk-1.1.8.jar')
 }

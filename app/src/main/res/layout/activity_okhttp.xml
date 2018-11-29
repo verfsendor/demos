@@ -6,23 +6,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-   <com.test.demos.demos.view.MyTextview
-       android:layout_width="match_parent"
-       android:layout_height="50dp"
-       android:text="的款式更健康"
-       android:foregroundGravity="center"/>
-
-   <com.test.demos.demos.view.MyTextview
-       android:layout_width="match_parent"
-       android:layout_height="50dp"
-       android:text="222尚德机构"
-       android:foregroundGravity="center"/>
 
    <Button
        android:id="@+id/btn"
        android:layout_width="match_parent"
        android:layout_height="50dp"
        android:text="buttton"
+       android:foregroundGravity="center"/>
+
+   <TextView
+       android:id="@+id/tv"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:text="这是我的测试"
+       android:gravity="center"
        android:foregroundGravity="center"/>
 
 </LinearLayout>

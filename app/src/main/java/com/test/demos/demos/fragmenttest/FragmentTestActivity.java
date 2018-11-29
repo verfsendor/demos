@@ -12,8 +12,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.test.demos.demos.R;
-import com.test.demos.demos.saveTest.SaveTestActivity;
-import com.test.demos.demos.servicetest.Test2Service;
+import com.test.demos.demos.saveinstanceTest.SaveTestActivity;
 import com.test.demos.demos.servicetest.TestService;
 
 public class FragmentTestActivity extends AppCompatActivity {

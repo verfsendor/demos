@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-   <com.test.demos.demos.MyTextview
+   <com.test.demos.demos.view.MyTextview
        android:layout_width="match_parent"
        android:layout_height="50dp"
        android:text="司空见惯思考更健康"/>

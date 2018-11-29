@@ -4,10 +4,10 @@ buildscript {
 
 
     repositories {
+        google()
         maven { url "http://maven.weidai.work/nexus/content/groups/public/" }
 
         jcenter()
-        google()
         maven {
             url "http://maven.weidai.work/nexus/content/repositories/releases"
             name 'Google'
@@ -27,6 +27,7 @@ buildscript {
 
 allprojects {
     repositories {
+        google()
         jcenter()
         maven {
             url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/"

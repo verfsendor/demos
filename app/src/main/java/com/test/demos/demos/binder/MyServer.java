@@ -38,8 +38,7 @@ public class MyServer extends IMyAidlInterface.Stub {
 
     @Override
     public void sendMessage(Message msg) throws RemoteException {
-        Log.v("verf","MyServer端 ** 发送消息 ** "+ msg.toString());
+        Log.v("verf","MyServer端 ** 接到消息 ** "+ msg.toString());
     }
-
 }
 
