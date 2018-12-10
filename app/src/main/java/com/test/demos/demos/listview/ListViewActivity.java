@@ -1,13 +1,17 @@
 package com.test.demos.demos.listview;
+import android.Manifest;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,6 +22,7 @@ import java.util.List;
 public class ListViewActivity extends AppCompatActivity {
     ListView listView;
     TabLayout tabLayout;
+    int position;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,12 +37,28 @@ public class ListViewActivity extends AppCompatActivity {
         tabLayout.addTab(tab1);
         tabLayout.addTab(tab2);
         ArrayList<ListViewBean> list = new ArrayList<>();
-        for(int i = 0; i < 225; i++){
+        for(int i = 0; i < 15; i++){
             ListViewBean bean = new ListViewBean("名字","值", "2018-1127","备注");
             list.add(bean);
         }
         MyAdapter adapter = new MyAdapter(this,0,0,list);
         listView.setAdapter(adapter);
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                 if(position != firstVisibleItem){
+                     position = firstVisibleItem;
+                     Log.v("verf","hookListView  " + position);
+                     ListViewHook.hookListView(listView);
+                 }
+            }
+        });
+
     }
 
 
